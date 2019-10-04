@@ -4,15 +4,21 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+apply plugin: "androidx.navigation.safeargs"
+
+def config = rootProject.extensions.getByName("ext")
+
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion config["compileSdkVersion"]
+    buildToolsVersion config["buildToolsVersion"]
     defaultConfig {
         applicationId "com.redveloper.mvvm"
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion config["minSdkVersion"]
+        targetSdkVersion config["targetSdkVersion"]
+        versionCode config["versionCode"]
+        versionName config["versionName"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -21,15 +27,57 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation config.commonDependency.kotlin
+    implementation config.commonDependency.appCompat
+    implementation config.commonDependency.core
+    implementation config.commonDependency.constraintLayout
+    testImplementation config.commonDependency.junit
+    androidTestImplementation config.commonDependency.testRunner
+    androidTestImplementation config.commonDependency.espresso
+
+    //service
+    implementation config.serviceDependency.retrofit
+    implementation config.serviceDependency.retrofitRxjava
+    implementation config.serviceDependency.retrofitGson
+    implementation config.serviceDependency.rxjavaReactive
+    implementation config.serviceDependency.rxAndroid
+    implementation config.serviceDependency.gson
+
+    //image
+    implementation config.serviceDependency.glide
+    annotationProcessor config.serviceDependency.glideCompiler
+
+    //easy pref
+    implementation config.serviceDependency.easyPref
+
+    //recycler and card
+    implementation config.commonDependency.recyclerview
+    implementation config.commonDependency.cardview
+
+    //kotlin coroutines
+    implementation config.serviceDependency.kotlinCoroutinesCore
+    implementation config.serviceDependency.kotlinCoroutinesAndroid
+
+    //viewmodel and livedata
+    implementation config.serviceDependency.viewModel
+
+    //kodelin depedency injection
+    implementation config.serviceDependency.kodelinInjection
+    implementation config.serviceDependency.kodelinInjectionAndroid
+
+    //room
+    implementation config.dataDependency.room
+    implementation config.dataDependency.roomKtx
+    kapt config.dataDependency.roomKapt
+
+    //android navigation architecture
+    implementation config.commonDependency.navFragment
+    implementation config.commonDependency.navUI
 }

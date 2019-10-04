@@ -5,13 +5,14 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0-alpha05"
     }
 }
 
@@ -19,10 +20,81 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext{
+    kotlinVersion = '1.3.41'
+    compileSdkVersion = 29
+    buildToolsVersion = '29.0.2'
+    minSdkVersion = 19
+    targetSdkVersion = 29
+    versionCode = 1
+    versionName = '1.0'
+    supportLibVersion = '1.0.2'
+    jUnitVersion = '4.12'
+    androidxVersion = '1.1.1'
+    constraintLayoutVersion = '1.1.3'
+    espressoVersion = '3.1.1'
+
+    retrofitVersion = '2.6.0'
+    gsonVersion = '2.8.2'
+    glideVersion = '4.9.0'
+    rxJavaReactiveVersion = '2.2.9'
+    rxAndroid = '2.0.2'
+    easyPrefVersion = '1.9.0'
+
+    recyclerviewVersion = '1.1.0-beta03'
+    cardviewVersion = '1.0.0'
+
+    kotlinCoroutinesVersion = '1.3.2'
+
+    viewModelVersion = '2.0.0'
+    kodelinInjectionVersion = '6.2.1'
+
+    roomVersion = '2.1.0-rc01'
+
+    navigationVersion = '2.1.0-alpha05'
+
+    commonDependency = [
+            kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            appCompat : "androidx.appcompat:appcompat:${supportLibVersion}",
+            core : "androidx.core:core-ktx:${supportLibVersion}",
+            constraintLayout : "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
+            junit : "junit:junit:${jUnitVersion}",
+            testRunner : "androidx.test:runner:${androidxVersion}",
+            espresso : "androidx.test.espresso:espresso-core:${espressoVersion}",
+            recyclerview : "androidx.recyclerview:recyclerview:${recyclerviewVersion}",
+            cardview : "androidx.cardview:cardview:${cardviewVersion}",
+            navFragment : "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
+            navUI : "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
+    ]
+
+    serviceDependency = [
+            retrofit : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitRxjava : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            retrofitGson : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            rxjavaReactive : "io.reactivex.rxjava2:rxjava:${rxJavaReactiveVersion}",
+            rxAndroid : "io.reactivex.rxjava2:rxandroid:${rxAndroid}",
+            gson : "com.google.code.gson:gson:${gsonVersion}",
+            glide : "com.github.bumptech.glide:glide:${glideVersion}",
+            glideCompiler : "com.github.bumptech.glide:compiler:${glideVersion}",
+            easyPref : "com.pixplicity.easyprefs:library:${easyPrefVersion}",
+            kotlinCoroutinesCore : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinCoroutinesVersion}",
+            kotlinCoroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinCoroutinesVersion}",
+            viewModel : "androidx.lifecycle:lifecycle-extensions:${viewModelVersion}",
+            kodelinInjection : "org.kodein.di:kodein-di-generic-jvm:${kodelinInjectionVersion}",
+            kodelinInjectionAndroid : "org.kodein.di:kodein-di-framework-android-x:${kodelinInjectionVersion}"
+    ]
+
+    dataDependency = [
+            room : "androidx.room:room-runtime:${roomVersion}",
+            roomKtx : "androidx.room:room-ktx:${roomVersion}",
+            roomKapt : "androidx.room:room-compiler:${roomVersion}",
+    ]
+
 }
