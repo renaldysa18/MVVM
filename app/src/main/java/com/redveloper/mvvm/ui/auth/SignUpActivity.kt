@@ -17,8 +17,6 @@ import com.redveloper.mvvm.ui.home.HomeActivity
 import com.redveloper.mvvm.utils.hide
 import com.redveloper.mvvm.utils.show
 import com.redveloper.mvvm.utils.toast
-import com.redveloper.mvvm.viewmodel.AuthViewModel
-import com.redveloper.mvvm.viewmodel.AuthViewModelFactory
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity(), AuthView {

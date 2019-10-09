@@ -1,13 +1,13 @@
-package com.redveloper.mvvm.viewmodel
+package com.redveloper.mvvm.ui.home.profil
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.redveloper.mvvm.data.repositories.UserRespository
 
-class AuthViewModelFactory(
+class ProfileViewModelFactory(
     private val repository: UserRespository
-): ViewModelProvider.NewInstanceFactory() {
+) : ViewModelProvider.NewInstanceFactory(){
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return AuthViewModel(repository) as T
+        return ProfileViewModel(repository) as T
     }
 }

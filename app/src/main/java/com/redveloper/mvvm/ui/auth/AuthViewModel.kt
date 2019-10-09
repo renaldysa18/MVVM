@@ -1,4 +1,4 @@
-package com.redveloper.mvvm.viewmodel
+package com.redveloper.mvvm.ui.auth
 
 import android.content.Intent
 import android.util.Patterns
@@ -6,8 +6,6 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.redveloper.mvvm.data.repositories.UserRespository
 import com.redveloper.mvvm.iview.AuthView
-import com.redveloper.mvvm.ui.auth.LoginActivity
-import com.redveloper.mvvm.ui.auth.SignUpActivity
 import com.redveloper.mvvm.utils.ApiException
 import com.redveloper.mvvm.utils.Coroutines
 

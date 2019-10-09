@@ -6,7 +6,7 @@
     <data>
         <variable
             name="loginViewModel"
-            type="com.redveloper.mvvm.viewmodel.AuthViewModel" />
+            type="com.redveloper.mvvm.ui.auth.AuthViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
