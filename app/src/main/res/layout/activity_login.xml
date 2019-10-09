@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.redveloper.mvvm.viewmodel.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        tools:context=".ui.auth.LoginActivity">
+
+        <EditText
+            android:text="@={loginViewModel.email}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/et_email_login"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            tools:ignore="Autofill" />
+        <EditText
+            android:text="@={loginViewModel.password}"
+            android:layout_marginTop="30dp"
+            android:id="@+id/et_password_login"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            app:layout_constraintTop_toBottomOf="@id/et_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            tools:ignore="Autofill" />
+
+        <Button
+            android:onClick="@{loginViewModel::onButtonLoginClick}"
+            android:id="@+id/btn_login"
+            android:background="@color/colorAccent"
+            android:text="@string/login"
+            app:layout_constraintTop_toBottomOf="@id/et_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_to_regis"
+            android:background="@color/colorAccent"
+            android:text="@string/register"
+            android:onClick="@{loginViewModel::onButtonToRegister}"
+            app:layout_constraintTop_toBottomOf="@id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/pb_login"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
