@@ -6,4 +6,9 @@
         android:id="@+id/profileFragment"
         />
 
+    <item
+        android:id="@+id/quoteFragment"
+        android:title="@string/quote"
+        />
+
 </menu>

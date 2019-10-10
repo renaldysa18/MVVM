@@ -11,4 +11,5 @@
     <string name="profile">Profile</string>
     <string name="home">Home</string>
     <string name="welcome">Welcome</string>
+    <string name="quote">Quote</string>
 </resources>
