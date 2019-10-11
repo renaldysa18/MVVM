@@ -10,6 +10,7 @@ import com.redveloper.mvvm.utils.Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+
 class QuoteRespository (
     private val api: BaseApi,
     private val db: AppDatabase
@@ -32,9 +33,12 @@ class QuoteRespository (
 
     private suspend fun fetchQuotes(){
         if(isFetchNeeded()){
-            val response = apiRequest { api.getQoutes() }
-            quotes.postValue(response.quotes)
-
+            try {
+                val response = apiRequest { api.getQoutes() }
+                quotes.postValue(response.quotes)
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package com.redveloper.mvvm.data.network
 
 import com.redveloper.mvvm.data.network.responses.AuthResponse
 import com.redveloper.mvvm.data.network.responses.QuoteResponse
+import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -34,8 +35,16 @@ interface BaseApi {
     //quote
     @GET("quotes")
     suspend fun getQoutes() : Response<QuoteResponse>
+
     companion object{
-        operator fun invoke() : BaseApi{
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ) : BaseApi{
+
+            val okkHttpclient = OkHttpClient.Builder()
+                .addInterceptor(networkConnectionInterceptor)
+                .build()
+
             return Retrofit.Builder()
                 .baseUrl("https://api.simplifiedcoding.in/course-apis/mvvm/")
                 .addConverterFactory(GsonConverterFactory.create())

@@ -7,10 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.redveloper.mvvm.R
-import com.redveloper.mvvm.data.db.AppDatabase
 import com.redveloper.mvvm.data.db.entities.UsersModel
-import com.redveloper.mvvm.data.network.BaseApi
-import com.redveloper.mvvm.data.repositories.UserRespository
 import com.redveloper.mvvm.databinding.ActivityLoginBinding
 import com.redveloper.mvvm.iview.AuthView
 import com.redveloper.mvvm.ui.home.HomeActivity
@@ -18,16 +15,17 @@ import com.redveloper.mvvm.utils.hide
 import com.redveloper.mvvm.utils.show
 import com.redveloper.mvvm.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 
-class LoginActivity : AppCompatActivity(), AuthView {
+class LoginActivity : AppCompatActivity(), AuthView, KodeinAware {
+
+    override val kodein by kodein()
+    private val factory: AuthViewModelFactory by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val api = BaseApi.invoke()
-        val db = AppDatabase(this)
-        val repository = UserRespository(api, db)
-        val factory = AuthViewModelFactory(repository)
-
         val binding: ActivityLoginBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_login)
         val viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
