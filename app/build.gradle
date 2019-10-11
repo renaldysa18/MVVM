@@ -86,7 +86,5 @@ dependencies {
     implementation config.commonDependency.navFragment
     implementation config.commonDependency.navUI
 
-    //preference
-    implementation config.serviceDependency.preference
 
 }

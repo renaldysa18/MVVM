@@ -5,7 +5,7 @@ import com.redveloper.mvvm.data.repositories.QuoteRespository
 import com.redveloper.mvvm.utils.lazyDeferred
 
 class QuoteViewModel(
-    repository: QuoteRespository
+   repository: QuoteRespository
 ) : ViewModel() {
 
     val quotes by lazyDeferred {

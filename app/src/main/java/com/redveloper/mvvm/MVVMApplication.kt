@@ -9,6 +9,7 @@ import com.redveloper.mvvm.data.repositories.UserRespository
 import com.redveloper.mvvm.ui.auth.AuthViewModelFactory
 import com.redveloper.mvvm.ui.home.profil.ProfileViewModelFactory
 import com.redveloper.mvvm.ui.home.quote.QuoteViewModelFactory
+import com.redveloper.mvvm.utils.PrefsApplication
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -17,7 +18,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-class MVVMApplication : Application(), KodeinAware{
+class MVVMApplication : PrefsApplication(), KodeinAware{
     override val kodein = Kodein.lazy {
             import(androidXModule(this@MVVMApplication))
 
@@ -28,6 +29,6 @@ class MVVMApplication : Application(), KodeinAware{
             bind() from singleton { QuoteRespository(instance(), instance()) }
             bind() from provider { AuthViewModelFactory(instance()) }
             bind() from provider { ProfileViewModelFactory(instance()) }
-            bind() from provider{ QuoteViewModelFactory(instance()) }
+            bind() from provider { QuoteViewModelFactory(instance()) }
         }
 }
