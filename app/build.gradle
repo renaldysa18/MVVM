@@ -86,5 +86,9 @@ dependencies {
     implementation config.commonDependency.navFragment
     implementation config.commonDependency.navUI
 
+    //groupie
+    implementation config.serviceDependency.groupie
+    implementation config.serviceDependency.groupieKotlin
+    implementation config.serviceDependency.groupieData
 
 }

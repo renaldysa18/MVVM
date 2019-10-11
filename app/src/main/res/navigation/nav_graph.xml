@@ -8,10 +8,9 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.redveloper.mvvm.ui.home.profil.ProfileFragment"
-        android:label="Profile" />
+        android:label="Profile"  />
     <fragment
         android:id="@+id/quoteFragment"
         android:name="com.redveloper.mvvm.ui.home.quote.QuoteFragment"
-        android:label="QuoteFragment"
-        tools:layout="@layout/quote_fragment" />
+        android:label="QuoteFragment" />
 </navigation>

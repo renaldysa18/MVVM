@@ -22,7 +22,7 @@ class QuoteRespository (
     private val quotes = MutableLiveData<List<QuoteModel>>()
 
     init {
-        quotes.observeForever{
+        quotes.observeForever {
             saveQuotes(it)
         }
     }
@@ -36,20 +36,20 @@ class QuoteRespository (
 
     private suspend fun fetchQuotes(){
 
-        val savedAt = Prefs.getString(StaticString.KEY_SAVED_AT, null)
+//        val savedAt = Prefs.getString(StaticString.KEY_SAVED_AT, null)
 
-        if(isFetchNeeded(LocalDateTime.parse(savedAt)) || savedAt == null ){
+//        if(isFetchNeeded(LocalDateTime.parse(savedAt)) || savedAt == null ){
             try {
                 val response = apiRequest { api.getQoutes() }
                 quotes.postValue(response.quotes)
             } catch (e: Exception){
                 e.printStackTrace()
             }
-        }
+//        }
     }
 
     private fun isFetchNeeded(saveAt: LocalDateTime): Boolean{
-        return ChronoUnit.HOURS.between(saveAt, LocalDateTime.now()) > 6
+        return true
     }
 
     private fun saveQuotes(quotes: List<QuoteModel>){
